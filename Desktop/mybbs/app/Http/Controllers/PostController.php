@@ -30,4 +30,10 @@ class PostController extends Controller
         return view('posts.show')
             ->with(['post' => $post]);
     }
+
+//createメソッド追加
+    public function creste()
+    {
+        return view('posts.create');
+    }
 }
