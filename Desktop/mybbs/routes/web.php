@@ -25,7 +25,8 @@ Route::get('/', [PostController::class, 'index'])
 // URLにパラメータ(id)を付けるルーティング。
 // Implicit Bindingでコードを短く書く
 Route::get('/posts/{post}', [PostController::class, 'show'])
-    ->name('posts.show');
+    ->name('posts.show')
+    ->where('post', '[0-9]+'); //{post}は0~9整数を受け付ける、createメソッドにジャンプさせる
 
 //posts.createのURLにアクセスしたらPostControllerのcreateメソッドを呼び出す
 Route::get('/posts/create', [PostController::class, 'create'])

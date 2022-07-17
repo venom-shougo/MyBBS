@@ -32,7 +32,7 @@ class PostController extends Controller
     }
 
 //createメソッド追加
-    public function creste()
+    public function create()
     {
         return view('posts.create');
     }
