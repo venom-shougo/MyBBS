@@ -37,12 +37,16 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-//投稿保存処理
+//投稿保存処理、バリデーション処理
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:3', //入力必須、最低3文字
+            'body'  => 'required', //入力必須
+        ]);
         $post = new Post();
         $post->title = $request->title;
-        $post->body = $request->body;
+        $post->body  = $request->body;
         $post->save();
 
         //DB処理後リダイレクト先をルーティング名で指定
