@@ -43,6 +43,10 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|min:3', //入力必須、最低3文字
             'body'  => 'required', //入力必須
+        ],[ //エラーメッセージを日本語化
+            'title.required' => 'タイトルを入力してください',
+            'title.min'      => ':min 文字以上入力してください',
+            'body.required'  => '本文を入力してください'
         ]);
         $post = new Post();
         $post->title = $request->title;
