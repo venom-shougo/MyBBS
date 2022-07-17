@@ -36,4 +36,17 @@ class PostController extends Controller
     {
         return view('posts.create');
     }
+
+//投稿保存処理
+    public function store(Request $request)
+    {
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        //DB処理後リダイレクト先をルーティング名で指定
+        return redirect()
+            ->route('posts.index');
+    }
 }
