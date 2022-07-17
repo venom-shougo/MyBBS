@@ -26,3 +26,7 @@ Route::get('/', [PostController::class, 'index'])
 // Implicit Bindingでコードを短く書く
 Route::get('/posts/{post}', [PostController::class, 'show'])
     ->name('posts.show');
+
+//posts.createのURLにアクセスしたらPostControllerのcreateメソッドを呼び出す
+Route::get('/posts/create', [PostController::class, 'create'])
+    ->name('posts.create');
