@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -38,16 +39,8 @@ class PostController extends Controller
     }
 
 //投稿保存処理、バリデーション処理
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $request->validate([
-            'title' => 'required|min:3', //入力必須、最低3文字
-            'body'  => 'required', //入力必須
-        ],[ //エラーメッセージを日本語化
-            'title.required' => 'タイトルを入力してください',
-            'title.min'      => ':min 文字以上入力してください',
-            'body.required'  => '本文を入力してください'
-        ]);
         $post = new Post();
         $post->title = $request->title;
         $post->body  = $request->body;
@@ -66,17 +59,8 @@ class PostController extends Controller
     }
 
 //投稿編集機能を完成
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $request->validate([
-            'title' => 'required|min:3', //入力必須、最低3文字
-            'body'  => 'required', //入力必須
-        ],[ //エラーメッセージを日本語化
-            'title.required' => 'タイトルを入力してください',
-            'title.min'      => ':min 文字以上入力してください',
-            'body.required'  => '本文を入力してください'
-        ]);
-
         $post->title = $request->title;
         $post->body  = $request->body;
         $post->save();
