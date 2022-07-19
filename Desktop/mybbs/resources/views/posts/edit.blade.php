@@ -1,18 +1,18 @@
 <x-layout>
     <x-slot name="title">
-        Edit New Post - My BBS
+        Edit Post - My BBS
     </x-slot>
 
     <div class="back-link">
         &laquo; <a href="{{ route('posts.show', $post) }}">Back</a>
     </div>
 
-    <h1> Edit Post</h1>
+    <h1>Edit Post</h1>
 
-    <form  method="post" action="{{ route('posts.update', $post) }}">
+    <form method="post" action="{{ route('posts.update', $post) }}">
         @method('PATCH')
         @csrf
-        
+
         <div class="form-group">
             <label>
                 Title
