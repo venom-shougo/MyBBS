@@ -35,3 +35,8 @@ Route::get('/posts/create', [PostController::class, 'create'])
 //投稿保存処理
 Route::post('/posts/store', [PostController::class, 'store'])
     ->name('posts.store');
+
+//投稿の編集処理
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
+    ->name('posts.edit')
+    ->where('post', '[0-9]+');
