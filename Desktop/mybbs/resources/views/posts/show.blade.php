@@ -9,6 +9,9 @@
     <h1>
         <span>{{ $post->title }}</span>
         <a href="{{ route('posts.edit', $post) }}">[Edit]</a>
+        <form method="post" action="">
+            <button class="btn">[x]</button>
+        </form>
     </h1>
     <p>{!! nl2br(e($post->body)) !!}</p>
 </x-layout>
