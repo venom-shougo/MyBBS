@@ -15,7 +15,7 @@ class PostController extends Controller
         $posts = Post::latest()->get();
 
         return view('index')
-            ->with(['posts' => $posts]);
+             ->with(['posts' => $posts]);
     }
 
     // public function show($id)
@@ -29,7 +29,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show')
-            ->with(['post' => $post]);
+             ->with(['post' => $post]);
     }
 
 //createメソッド追加
@@ -48,14 +48,14 @@ class PostController extends Controller
 
         //DB処理後リダイレクト先をルーティング名で指定
         return redirect()
-            ->route('posts.index');
+             ->route('posts.index');
     }
 
 //投稿編集処理
     public function edit(Post $post)
     {
         return view('posts.edit')
-            ->with(['post' => $post]);
+             ->with(['post' => $post]);
     }
 
 //投稿編集機能を完成
@@ -67,6 +67,15 @@ class PostController extends Controller
 
         //データ更新後に詳細ページに飛ばす
         return redirect()
-            ->route('posts.show', $post);
+             ->route('posts.show', $post);
+    }
+
+//投稿削除機能
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()
+             ->route('posts.index');
     }
 }
