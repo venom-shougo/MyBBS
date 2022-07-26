@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use League\CommonMark\Reference\ReferenceParser;
 
 return new class extends Migration
 {
@@ -16,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('post_id'); //postsテーブルのidカラムに紐付け
-            $table->string('body'); //bodyカラムを追加
+            $table->unsignedBigInteger('post_id');
+            $table->string('body');
             $table->timestamps();
             $table
-                ->foreign('post_id') //外部キー制約
-                ->reference('id')
+                ->foreign('post_id')
+                ->references('id')
                 ->on('posts')
-                ->onDelete('cascade'); //postsレコード削除で関連するコメント削除
+                ->onDelete('cascade');
         });
     }
 
