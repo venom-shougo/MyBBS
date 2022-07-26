@@ -13,4 +13,10 @@ class Comment extends Model
         'post_id',
         'body',
     ];
+
+    //comment に関連するpost を取得する $comment->post
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
