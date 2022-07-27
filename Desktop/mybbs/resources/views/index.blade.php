@@ -18,5 +18,6 @@
         @empty
             <li>No posts yet!</li>
         @endforelse
+        
     </ul>
 </x-layout>
