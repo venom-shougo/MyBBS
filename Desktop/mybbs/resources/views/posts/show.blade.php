@@ -20,6 +20,14 @@
 
     <h2>Comments</h2>
     <ul>
+        <li>
+            <form action="{{ route('comments.store', $post) }}" method="post" class="comment-form">
+                @csrf
+
+                <input type="text" name="body">
+                <button>Add</button>
+            </form>
+        </li>
         @foreach ($post->comments as $comment)
             <li>
                 {{ $comment->body }}
