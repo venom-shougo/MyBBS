@@ -28,7 +28,8 @@
                 <button>Add</button>
             </form>
         </li>
-        @foreach ($post->comments as $comment)
+        {{-- コメントを後順 PostControlerのletest()を呼び出す --}}
+        @foreach ($post->comments()->latest()->get() as $comment)
             <li>
                 {{ $comment->body }}
             </li>
