@@ -22,4 +22,12 @@ class CommentController extends Controller
         return redirect() //投稿の詳細ページにリダイレクト
             ->route('posts.show', $post);
     }
+
+    public function destroy(Comment $comment) //コメント削除機能
+    {
+        $comment->delete();
+
+        return redirect()
+            ->route('posts.show', $comment->post); //投稿画面にリダイレクト
+    }
 }
