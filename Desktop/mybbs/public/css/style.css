@@ -104,3 +104,8 @@ button
 {
     margin-left: 8px;
 }
+
+.delete-comment
+{
+    display: inline-block;
+}
