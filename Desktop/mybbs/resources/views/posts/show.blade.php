@@ -55,6 +55,18 @@
 
                 e.target.submit();
             });
+
+            document.querySelectorAll('.delete-comment').forEach(form => {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+
+                    if (!confirm('Sure to delete?')) {
+                        return;
+                    }
+
+                    form.submit();
+                });
+            });
         }
     </script>
 </x-layout>
