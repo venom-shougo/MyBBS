@@ -32,6 +32,12 @@
         @foreach ($post->comments()->latest()->get() as $comment)
             <li>
                 {{ $comment->body }}
+                <form action="" method="post" class="delete-comment">
+                    @method('DELETE')
+                    @csrf
+
+                    <button class="btn">[x]</button>
+                </form>
             </li>
 
         @endforeach
